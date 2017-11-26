@@ -6,7 +6,6 @@
     "react": "^16.1.1",
     "react-dom": "^16.1.1",
     "react-scripts": "1.0.17",
-    "eslint-config-react-app": "^3.0",
     "eslint": "^3.8.1"
     },
   "scripts": {
