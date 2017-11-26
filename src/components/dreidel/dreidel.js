@@ -11,7 +11,7 @@ class Dreidel extends Component {
           <img src={dreidel} className="dreidel" alt="dreidel"/>
           <h1 className="hebrew">{this.props.hebrewLetter}</h1>
       </div>
-      <button className="spinButton" onClick={()=>{alert("hello!")}}>Spin</button>
+      <button className="spinButton" onClick={()=>{alert("Dreidel has been clicked")}}>Spin!</button>
       </div>
       
     );

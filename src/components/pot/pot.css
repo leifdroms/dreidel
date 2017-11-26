@@ -1,0 +1,14 @@
+.coin {
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    background-color: gold;
+    border: 2px solid black;
+}
+
+.pot {
+    height: 30px;
+    width: 100px;
+    position: relative;
+    display: block;
+}

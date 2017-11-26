@@ -10,7 +10,7 @@
     width: 300px;
     position: absolute;
     top: 10px;
-    left: 10px;
+    right: 75px;
     
   }
   
@@ -18,7 +18,7 @@
     font-size: 150px;
     position: absolute;
     bottom: 20px;
-    left: 130px;
+    left: 100px;
   }
 
   .spinButton {
@@ -30,5 +30,6 @@
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
-    left:50%;
+    left:75px;
+    position: absolute;
   }
