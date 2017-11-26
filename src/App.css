@@ -2,14 +2,28 @@
   text-align: center;
 }
 
+.centeredText {
+  margin: auto;
+  position: relative;
+  padding: 10px;
+  left: 35%;
+}
+
 .centered {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  -webkit-transform: translate(-50%, -50%);
-  -moz-transform: translate(-50%, -50%);
-  -o-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  z-index: 100;
+  margin: auto;
+  position: absolute;
+  left: 20%;
+  padding: 10px;
+}
+
+.leftHand {
+  left: 100px;
+  padding: 10px;
+  position: absolute;
+}
+
+.rightHand {
+  left: 500px;
+  padding: 10px;
+  position: absolute;
 }

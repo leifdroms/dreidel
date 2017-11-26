@@ -10,6 +10,7 @@ class Pot extends Component {
      }
     return (
     <div className="pot">
+    <h1>Coins in pot: {this.props.pot} </h1>
     {pot}
     </div>
       
