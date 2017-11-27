@@ -3,13 +3,6 @@ import '../../App.css';
 import './newgame.css';
 // import Players from './players';
 
-function addPlayer(playerName) {
-  function newFunction() {
-    alert(`Hello ${playerName}`);
-  }
-  newFunction();
-}
-
 class Newgame extends React.Component {
   render() {  
   if (this.props.newGame) {
@@ -17,9 +10,16 @@ class Newgame extends React.Component {
     return (
       <div className="popup overlay">
         <p>Enter Player Name: </p>
-        <input ref="playerName"/><button onClick={() => {addPlayer(this.refs.playerName.value) }}>Add Player</button>
+        <input ref="playerName"/><button onClick={() => this.props.addPlayer(this.refs.playerName.value,this.refs.color.value) }>Add Player</button>
+        <p>Select a color:</p>
+        <select ref="color">
+         {this.props.colors.map(color => <option value={color}>{color}</option>)}
+
+        </select>
         <p>Players:</p>
-       <ul>{this.props.players.map((listValue => <li> {listValue.playerName} </li>))}</ul>
+       <ul>{this.props.players.map((listValue => <li> {listValue.playerName} <button onClick={() => this.props.removePlayer(listValue.playerName)}>Remove Player</button>
+       
+       </li>))}</ul>
         <button>Let us Play!</button>
       </div>
     );

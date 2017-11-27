@@ -8,20 +8,40 @@ import './App.css';
 class App extends React.Component {
   constructor(props) {
     super(props);
+    this.addPlayer = this.addPlayer.bind(this);
+    this.removePlayer = this.removePlayer.bind(this);
     this.state = {
       players: [{ playerName: 'jim roflcopter', bank: 0, color: 'pink' }],
       hebrewLetter: 'נ',
       pot: 50,
-      newGame: true,
+      newGame: true
     };
   }
+
+  addPlayer(player,color){
+    let players = this.state.players.slice();
+    players.push({playerName: player,bank:0,color:color})
+    this.setState({players: players});
+  }
+
+  removePlayer(player){
+    let players = this.state.players.slice();
+    players = players.filter(function(e) { return e.playerName !== player })
+    this.setState({players: players});
+  }
+
+  
   render() {
     return (
       <div>
 
         <div className="centeredText">
           <h1 className="App-title">Let's Play Dreidel Now!</h1>
-          <Newgame newGame={this.state.newGame} players={this.state.players}/>
+          <Newgame newGame={this.state.newGame} players={this.state.players}
+          addPlayer={this.addPlayer}
+          removePlayer={this.removePlayer}
+          colors={['pink','purple','red','blue','green','teal']}
+          />
         </div>
         <div className="centered">
           <Dreidel className="centered" hebrewLetter={this.state.hebrewLetter} />
