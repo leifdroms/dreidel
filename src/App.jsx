@@ -11,7 +11,7 @@ class App extends React.Component {
     this.addPlayer = this.addPlayer.bind(this);
     this.removePlayer = this.removePlayer.bind(this);
     this.state = {
-      players: [{ playerName: 'jim roflcopter', bank: 0, color: 'pink' }],
+      players: [],
       hebrewLetter: 'נ',
       pot: 50,
       newGame: true
