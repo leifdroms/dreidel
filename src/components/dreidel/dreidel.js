@@ -10,7 +10,7 @@ class Dreidel extends Component {
      <div className="dreidelContainer">
           <img src={dreidel} className="dreidel" alt="dreidel"/>
           <h1 className="hebrew">{this.props.hebrewLetter}</h1>
-          <button className="spinButton" onClick={()=>{alert("Dreidel has been clicked")}}>Spin!</button>
+          <button className="spinButton" onClick={()=>{this.props.spin(this.props.player)}}>Spin!</button>
       </div>
       </div>
       
