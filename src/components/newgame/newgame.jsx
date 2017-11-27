@@ -20,7 +20,8 @@ class Newgame extends React.Component {
        <ul>{this.props.players.map((listValue => <li> {listValue.playerName} <button onClick={() => this.props.removePlayer(listValue.playerName)}>Remove Player</button>
        
        </li>))}</ul>
-        <button>Let us Play!</button>
+       <p>{this.props.players.length}</p>
+        <button style={{"visibility":this.props.players.length<2?"hidden":"visible"}} onClick={()=> this.props.startGame()}>Let us Play!</button>
       </div>
     );
   }

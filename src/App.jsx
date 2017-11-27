@@ -10,6 +10,7 @@ class App extends React.Component {
     super(props);
     this.addPlayer = this.addPlayer.bind(this);
     this.removePlayer = this.removePlayer.bind(this);
+    this.startGame = this.startGame.bind(this);
     this.state = {
       players: [],
       hebrewLetter: 'נ',
@@ -30,18 +31,28 @@ class App extends React.Component {
     this.setState({players: players});
   }
 
+  startGame(){
+    alert("startgame clicked")
+    this.setState({newGame:false})
+  }
+
   
   render() {
+    let newGame;
+    if(this.state.newGame === true){
+      newGame = (<Newgame newGame={this.state.newGame} players={this.state.players}
+        addPlayer={this.addPlayer}
+        removePlayer={this.removePlayer}
+        startGame={this.startGame}
+        colors={['pink','purple','red','blue','green','teal']}
+        />)} else{
+          newGame = null;
+        }
     return (
       <div>
-
         <div className="centeredText">
           <h1 className="App-title">Let's Play Dreidel Now!</h1>
-          <Newgame newGame={this.state.newGame} players={this.state.players}
-          addPlayer={this.addPlayer}
-          removePlayer={this.removePlayer}
-          colors={['pink','purple','red','blue','green','teal']}
-          />
+        {newGame}
         </div>
         <div className="centered">
           <Dreidel className="centered" hebrewLetter={this.state.hebrewLetter} />
