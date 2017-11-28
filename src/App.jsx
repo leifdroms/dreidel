@@ -84,7 +84,7 @@ class App extends React.Component {
     let currentLetter = this.state.hebrewLetters[letterIndex]
     this.setState({hebrewLetter:currentLetter})
     hashMap[currentLetter](player) 
-    players.forEach(function(element,index){if(element.bank === 0 && players.length > 1){players.splice(index,1)}})
+    players.forEach(function(element,index){if(element.bank <= 0 && players.length > 1 && players.indexOf(element) !== player){players.splice(index,1)}})
 
     if(this.state.currentPlayer === this.state.players.length-1){
       this.setState({currentPlayer:0})
