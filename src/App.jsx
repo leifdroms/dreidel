@@ -15,7 +15,7 @@ class App extends React.Component {
     this.state = {
       players: [],
       hebrewLetters: ['נ','ג','ה','שׁ'],
-      hebrewLetter: 'נ',
+      hebrewLetter: '',
       pot: 0,
       newGame: true,
       currentPlayer:0
@@ -80,7 +80,6 @@ class App extends React.Component {
     }
 
 
-    if(players.length === 1){alert(`Congrats! ${players[0].playerName} is the winner!`)}
     let letterIndex = getRandomInt(0,4);
     let currentLetter = this.state.hebrewLetters[letterIndex]
     this.setState({hebrewLetter:currentLetter})
@@ -89,14 +88,12 @@ class App extends React.Component {
 
     if(this.state.currentPlayer === this.state.players.length-1){
       this.setState({currentPlayer:0})
-      alert("the next player is: " + this.state.players[0].playerName)      
     } else{
       this.setState({currentPlayer: this.state.currentPlayer+1})
-      alert("the next player is: " + this.state.players[this.state.currentPlayer+1].playerName)          
     }
-    alert("the current letter is: " + this.state.hebrewLetter)
     this.setState({players:players});
     this.setState({pot:pot});
+    if(players.length === 1){alert(`Congrats! ${players[0].playerName} is the winner!`)}    
   }
 
   
