@@ -4,6 +4,13 @@ import './dreidel.css';
 import dreidel from './dreidel.svg';
 
 class Dreidel extends Component {
+  constructor(props) {
+    super(props);
+      this.state = {
+      hebrewLetters: ['נ','ג','ה','שׁ'],
+    };
+  }
+
   render() {
     return (
     <div className="leftHand">

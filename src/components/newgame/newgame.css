@@ -21,3 +21,9 @@
     z-index: 1002;
     overflow: auto;
   }
+
+  .playerList {
+    list-style-type: none;
+    padding: 5px;
+    display: inline-block;
+  }
