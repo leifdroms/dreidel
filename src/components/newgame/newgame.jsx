@@ -8,7 +8,10 @@ class Newgame extends React.Component {
   if (this.props.newGame) {
     
     return (
-      <div className="popup overlay">
+      <div>
+      <div className="blackOverlay">
+      </div>
+      <div className="whiteContent">
         <p>Enter Player Name: </p>
         <input ref="playerName"/><button onClick={() => this.props.addPlayer(this.refs.playerName.value,this.refs.color.value) }>Add Player</button>
         <p>Select a color:</p>
@@ -22,6 +25,7 @@ class Newgame extends React.Component {
        </li>))}</ul>
        <p>{this.props.players.length}</p>
         <button style={{"visibility":this.props.players.length<2?"hidden":"visible"}} onClick={()=> this.props.startGame()}>Let us Play!</button>
+      </div>
       </div>
     );
   }

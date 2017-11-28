@@ -110,9 +110,10 @@ class App extends React.Component {
         }
     return (
       <div>
+      {newGame}
+
         <div className="centeredText">
           <h1 className="App-title">Let's Play Dreidel Now!</h1>
-        {newGame}
         </div>
         <div className="centered">
           <Dreidel className="centered" hebrewLetter={this.state.hebrewLetter}
