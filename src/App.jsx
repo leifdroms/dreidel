@@ -49,7 +49,6 @@ class App extends React.Component {
     
     this.setState({players:combinedPlayers})
     this.setState({newGame:true})
-    alert("reset button clicked")
   }
 
   spin(player,players,retiredPlayers,pot){
@@ -99,10 +98,13 @@ class App extends React.Component {
     hashMap[currentLetter](player) 
     players.forEach(function(element,index){if(element.bank <= 0 && players.length > 1 && players.indexOf(element) !== player){retiredPlayers.push(element);players.splice(index,1)}})
 
-    if(this.state.currentPlayer === this.state.players.length-1){
+    let currentPlayer = this.state.currentPlayer;
+    let nextPlayer = currentPlayer+1;
+    let lastPlayer = this.state.players.length-1
+    if(currentPlayer === lastPlayer){
       this.setState({currentPlayer:0})
     } else{
-      this.setState({currentPlayer: this.state.currentPlayer+1})
+      this.setState({currentPlayer: nextPlayer})
     }
     this.setState({retiredPlayers:retiredPlayers});    
     this.setState({players:players});
@@ -113,7 +115,6 @@ class App extends React.Component {
   render() {
     let winner;
     if(this.state.players.length === 1 && this.state.newGame === false){
-      alert("game over man!")
       winner=(<Winner newGame={this.state.newGame} resetGame={this.resetGame} winner={this.state.players[0].playerName}/>)
     } 
 
