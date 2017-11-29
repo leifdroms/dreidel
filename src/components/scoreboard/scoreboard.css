@@ -1,14 +1,9 @@
 .scoreboardContainer {
-  height: 100px;
-  width: 300px;
-  position: absolute;
-  margin-left: 25%;
+
 }
 
 .playerList {
-    list-style-type: none;
-    padding: 5px;
-    display: inline-block;
+
   }
 
   .currentPlayer {

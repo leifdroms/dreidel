@@ -1,41 +1,36 @@
 .leftHand {
-left:50%;
 }
 
 .dreidelContainer {
-    height: 350px;
-    width: 350px;
-    position: relative;
-    display: block;
-    left: 150px;
+  position: absolute;
+  margin:auto;
   }
   
-  .dreidel {
-    height: 300px;
-    width: 300px;
+  .dreidel {  
     position: absolute;
-    top: 10px;
-    right: 75px;
-    
+    padding:2px;
   }
   
   .hebrew {
-    font-size: 48px;
     position: absolute;
-    margin-top:17%;
-    margin-left:20%;
+    font-size: 48px;
+    padding:2px;
+    top: 10px;
+    bottom: 10px;
+    left:50px;
+    right:25px;
   }
 
   .spinButton {
+    position:absolute;
     background-color: cyan;
     border: none;
     color: black;
     padding: 15px 32px;
     text-align: center;
     text-decoration: none;
-    display: inline-block;
     font-size: 16px;
-    left:75px;
-    bottom:-15px;
-    position: absolute;
+    left:15px;
+    top: 325px;
+  
   }

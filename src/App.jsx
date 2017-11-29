@@ -111,23 +111,26 @@ class App extends React.Component {
     return (
       <div>
       {newGame}
-
         <div className="centeredText">
-          <h1 className="App-title">Let's Play Dreidel Now!</h1>
+          <h1 className="App">Let's Play Dreidel!</h1>
         </div>
-        <div className="centered">
-          <Dreidel className="centered" hebrewLetter={this.state.hebrewLetter}
-          hebrewLetters={this.state.hebrewLetters}
-          spin={this.spin}
-          player={this.state.currentPlayer}
-          players={this.state.players}
-          pot={this.state.pot} />
-          <div className="rightHand">
-            <Scoreboard players={this.state.players} currentPlayer={this.state.currentPlayer}/>
-          </div>
-          <div>
-            <Pot className="leftHand" pot={this.state.pot} />
-          </div>
+
+        <div className="gameContainer">
+            <div className="leftHand">
+              <Pot pot={this.state.pot} />
+            </div>
+
+            <div className="centered">
+              <Dreidel hebrewLetter={this.state.hebrewLetter}
+              hebrewLetters={this.state.hebrewLetters}
+              spin={this.spin}
+              player={this.state.currentPlayer}
+              players={this.state.players}
+              pot={this.state.pot} />
+            </div>  
+            <div className="rightHand">
+              <Scoreboard players={this.state.players} currentPlayer={this.state.currentPlayer}/>
+            </div>
         </div>
       </div>
     );
