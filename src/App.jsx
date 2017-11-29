@@ -3,6 +3,7 @@ import Scoreboard from './components/scoreboard/scoreboard.jsx';
 import Dreidel from './components/dreidel/dreidel';
 import Pot from './components/pot/pot';
 import Newgame from './components/newgame/newgame.jsx';
+import Winner from './components/winner/winner'
 import './App.css';
 
 class App extends React.Component {
@@ -12,8 +13,10 @@ class App extends React.Component {
     this.removePlayer = this.removePlayer.bind(this);
     this.startGame = this.startGame.bind(this);
     this.spin = this.spin.bind(this);
+    this.resetGame = this.resetGame.bind(this);
     this.state = {
       players: [],
+      retiredPlayers:[],
       hebrewLetters: ['נ','ג','ה','שׁ'],
       hebrewLetter: '',
       pot: 0,
@@ -38,7 +41,15 @@ class App extends React.Component {
     this.setState({newGame:false})
   }
 
-  spin(player,players,pot){
+  resetGame(){
+    let currentPlayer = this.state.players.slice();
+    let retiredPlayers = this.state.retiredPlayers.slice();
+    let combinedPlayers = [...currentPlayer,...retiredPlayers]
+    this.setState({players:combinedPlayers})
+    this.setState({newGame:true})
+  }
+
+  spin(player,players,retiredPlayers,pot){
     function getRandomInt(min, max) {
       min = Math.ceil(min);
       max = Math.floor(max);
@@ -54,7 +65,6 @@ class App extends React.Component {
       
   });
   pot = pot + pool;
-
     function nun(player){
       //do nothing
     }
@@ -84,20 +94,26 @@ class App extends React.Component {
     let currentLetter = this.state.hebrewLetters[letterIndex]
     this.setState({hebrewLetter:currentLetter})
     hashMap[currentLetter](player) 
-    players.forEach(function(element,index){if(element.bank <= 0 && players.length > 1 && players.indexOf(element) !== player){players.splice(index,1)}})
+    players.forEach(function(element,index){if(element.bank <= 0 && players.length > 1 && players.indexOf(element) !== player){retiredPlayers.push(element);players.splice(index,1)}})
 
     if(this.state.currentPlayer === this.state.players.length-1){
       this.setState({currentPlayer:0})
     } else{
       this.setState({currentPlayer: this.state.currentPlayer+1})
     }
+    this.setState({retiredPlayers:retiredPlayers});    
     this.setState({players:players});
-    this.setState({pot:pot});
-    if(players.length === 1){alert(`Congrats! ${players[0].playerName} is the winner!`)}    
+    this.setState({pot:pot});   
   }
 
   
   render() {
+    let winner;
+    if(this.state.players.length === 1 && this.state.newGame === false){
+      alert("game over man!")
+      winner=(<Winner newGame={this.state.newGame} resetGame={this.resetGame} winner={this.state.players[0].playerName}/>)
+    } 
+
     let newGame;
     if(this.state.newGame === true){
       newGame = (<Newgame newGame={this.state.newGame} players={this.state.players}
@@ -111,6 +127,7 @@ class App extends React.Component {
     return (
       <div>
       {newGame}
+      {winner}
         <div className="centeredText">
           <h1 className="App">Let's Play Dreidel!</h1>
         </div>
@@ -126,6 +143,7 @@ class App extends React.Component {
               spin={this.spin}
               player={this.state.currentPlayer}
               players={this.state.players}
+              retiredPlayers={this.state.retiredPlayers}
               pot={this.state.pot} />
             </div>  
             <div className="rightHand">
