@@ -12,7 +12,7 @@ class Winner extends React.Component {
           </div>
           <div className="whiteContent">
              <h1>Congrats! {this.props.winner} is the winner!</h1>
-            <button onClick={() => this.props.resetGame}>New Game</button>
+            <button onClick={() => this.props.resetGame()}>New Game</button>
           </div>
       </div>
     );

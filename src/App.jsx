@@ -45,8 +45,11 @@ class App extends React.Component {
     let currentPlayer = this.state.players.slice();
     let retiredPlayers = this.state.retiredPlayers.slice();
     let combinedPlayers = [...currentPlayer,...retiredPlayers]
+    combinedPlayers.forEach(function(element){element.bank=10;})
+    
     this.setState({players:combinedPlayers})
     this.setState({newGame:true})
+    alert("reset button clicked")
   }
 
   spin(player,players,retiredPlayers,pot){
