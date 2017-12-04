@@ -6,7 +6,7 @@ const Scoreboard = (props) => {
     <div className="scoreboardContainer">   
       <h1>Players</h1>
       {props.players.map(function(listValue,index){
-      return <ul className={"playerList " + (props.currentPlayer === index?"currentPlayer":"")} style={{"background-color": listValue.color}}>
+      return <ul className={"playerList " + (props.currentPlayer === index?"currentPlayer":"")} id={`player_${listValue.playerId}`}style={{"background-color": listValue.color}}>
                     <li>{listValue.playerName}</li>
                     <li>Bank: {listValue.bank}</li>
                     </ul>

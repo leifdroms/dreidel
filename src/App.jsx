@@ -27,7 +27,8 @@ class App extends React.Component {
 
   addPlayer(player,color){
     let players = this.state.players.slice();
-    players.push({playerName: player,bank:10,color:color})
+    let playerId = players.length;
+    players.push({playerName: player,bank:10,color:color,playerId:playerId})
     this.setState({players: players});
   }
 
@@ -48,7 +49,11 @@ class App extends React.Component {
     combinedPlayers.forEach(function(element){element.bank=10;})
     
     this.setState({players:combinedPlayers})
+    this.setState({retiredPlayers:[]})
+    this.setState({currentPlayer:0})
     this.setState({newGame:true})
+    this.setState({pot:0})
+    this.setState({hebrewLetter: '',})
   }
 
   spin(player,players,retiredPlayers,pot){
@@ -61,8 +66,8 @@ class App extends React.Component {
     // ante up! take 1 coin from each player
     let pool = 0;
     players.forEach(function(element) {
-      if(element.bank > 0){element.bank--;pool++}else {
-        alert(`oh no! ${element.playerName} is out of the game!`)        
+      if(element.bank > 0){element.bank = element.bank -1;pool = pool +1}else {
+        // alert(`oh no! ${element.playerName} is out of the game!`)        
       };
       
   });
@@ -80,7 +85,7 @@ class App extends React.Component {
       pot = Math.floor(pot/2)
     }
     function shin(player){
-      players[player].bank--;    
+      players[player].bank = players[player].bank -1;
       pot = pot + 1
     }
 
@@ -103,7 +108,7 @@ class App extends React.Component {
     let lastPlayer = this.state.players.length-1
     if(currentPlayer === lastPlayer){
       this.setState({currentPlayer:0})
-    } else{
+    } else if(this.state.players.length > 1){
       this.setState({currentPlayer: nextPlayer})
     }
     this.setState({retiredPlayers:retiredPlayers});    
@@ -138,7 +143,7 @@ class App extends React.Component {
 
         <div className="gameContainer">
             <div className="leftHand">
-              <Pot pot={this.state.pot} />
+              <Pot pot={this.state.pot} player={this.state.currentPlayer} />
             </div>
 
             <div className="centered">
